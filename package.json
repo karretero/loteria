@@ -4,12 +4,15 @@
   "description": "Comprobar numeros de la loteria nacional",
   "main": "loteria.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node loteria.js",
+    "dev": "nodemon loteria.js"
   },
   "author": "cs.jalberto@gmail.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.2",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
   }
 }
