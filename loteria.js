@@ -11,22 +11,26 @@ async function obtenerPremios(numeros) {
         // URL del JSON de Loterías de Navidad
         const url = 'https://e00-loterias.uecdn.es/navidad.json';
 
+        // Encabezados para incluir en la solicitud
+        const headers = {
+            // 'Origin': 'https://www.loteriasyapuestas.es',
+            // 'Referer': 'https://www.loteriasyapuestas.es/es/',
+        };
+        
         // Realizar la solicitud HTTP
-        const response = await axios.get(url);
+        const response = await axios.get(url, { headers })
 
         // Obtener los datos del JSON
         const datos = response.data;
-
         // Filtrar los premios para los números proporcionados
         const premios = {};
         numeros.forEach(numero => {
-            if (datos.combinaciones[numero]) {
-                premios[numero] = datos.combinaciones[numero];
+            if (datos.premios[numero]) {
+                premios[numero] = datos.premios[numero];
             } else {
                 premios[numero] = 'Número no premiado';
             }
         });
-        console.log('Premios:', premios);
         return premios;
     } catch (error) {
         throw new Error('Error al obtener los premios: ' + error.message);
